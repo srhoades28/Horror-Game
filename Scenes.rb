@@ -1,73 +1,35 @@
-class GameMap
-  @@counter = 0
-
-  @@scenes = ["Porch",
-    "Living_Room",
-    "Kitchen",
-    "Hallway",
-    "Back Yard"]
-
-  def initialize()
-  end
-
-  def first_scene()
-    return @@scenes[0]
-  end
-
-  def next_scene()
-    i = @@counter
-    return @@scenes[i + 1]
-  end
-
-  def current_scene()
-    i = @@counter
-    return @@scenes[i]
-  end
-
-  def advance_counter()
-    @@counter += 1
-    return @@counter
-  end
-
-end
-
-class GameEngine
-
-
-end
-
 class Scene
+
+  @@advance = false
 
   def get_advance_scenario(str)
     return next_scene = str
   end
-
-
-
 end
 
 class Porch < Scene
-
   def initialize()
     puts "Do you open the door?"
     puts ">>"
 
-    response = $stdin.gets.chomp()
-    advance = false
-
-    while advance == false
-
+    while @@advance == false
+      response = $stdin.gets.chomp()
       if response == "Yes"
+        @@advance = true
+        puts "Living_Room"
         return "Living_Room"
-      else
+      elsif response == "No"
         puts "You turn around to run away, but slip and fall into a woodchipper. "
+        puts "Death"
         return "Death"
+        @@advance = true
+      else
+        @@advance == false
+        puts "Enter a valid response you numbskull."
       end
-
     end
 
   end
-
 end
 
 class Living_Room < Scene
@@ -105,23 +67,22 @@ class Living_Room < Scene
     end
 
   end
-
 end
 
 class Kitchen < Scene
-
 end
 
 class Hallway < Scene
-
 end
 
-class Back_Yard < Scene
-
+class BackYard < Scene
 end
 
+class Death < Scene
 
-map1 = GameMap.new()
-current_scene = map1.current_scene
-next_scene = map1.next_scene
-puts next_scene
+  def initialize()
+    return "Death"
+  end
+
+
+end
