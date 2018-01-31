@@ -2,13 +2,15 @@ class Scene
 
   @@advance = false
 
-  def get_advance_scenario(str)
-    return next_scene = str
-  end
 end
 
 class Porch < Scene
+
   def initialize()
+
+  end
+
+  def run()
     puts "Do you open the door?"
     puts ">>"
 
@@ -28,13 +30,15 @@ class Porch < Scene
         puts "Enter a valid response you numbskull."
       end
     end
-
   end
 end
 
 class Living_Room < Scene
 
   def initialize()
+  end
+
+  def run()
 
     puts "The door creaks open to a large dark room. "
     puts "Something smells bad, like rotting food and burnt toast. "
@@ -65,7 +69,6 @@ class Living_Room < Scene
         puts ">>"
       end
     end
-
   end
 end
 
@@ -75,7 +78,7 @@ end
 class Hallway < Scene
 end
 
-class BackYard < Scene
+class Back_Yard < Scene
 end
 
 class Death < Scene
