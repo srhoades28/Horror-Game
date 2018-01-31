@@ -35,7 +35,7 @@ end
 
 class Living_Room < Scene
 
-  def initialize()
+  def initialize()  
   end
 
   def run()

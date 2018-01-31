@@ -30,8 +30,8 @@ class Runner
     @@scenes[@@counter].run()
   end
 
-  def run_next_scene(cur_scene)
-
+  def play()
+    @@scenes.each {|scene| scene.run()} 
   end
 
 end
