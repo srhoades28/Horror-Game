@@ -5,7 +5,6 @@ class Runner
   @@scenes = [Porch.new(),
     Living_Room.new(),
     Kitchen.new(),
-    Hallway.new(),
     Back_Yard.new(),
     Death.new(),
     Win.new()]
@@ -39,10 +38,10 @@ class Runner
       if var == "Next"
         self.advance_counter()
       elsif var == "Death"
-        @@scenes[5].run()
+        @@scenes[4].run()
         break
       else
-        @@scenes[6].run()
+        @@scenes[5].run()
         break
       end
     end
