@@ -6,7 +6,9 @@ class Runner
     Living_Room.new(),
     Kitchen.new(),
     Hallway.new(),
-    Back_Yard.new()]
+    Back_Yard.new(),
+    Death.new(),
+    Win.new()]
 
   @@counter = 0
 
@@ -27,11 +29,23 @@ class Runner
   end
 
   def run_scene()
-    @@scenes[@@counter].run()
+    next_scene = @@scenes[@@counter].run()
+    return next_scene
   end
 
   def play()
-    @@scenes.each {|scene| scene.run()} 
+    @@scenes.each do |scene|
+      var = scene.run()
+      if var == "Next"
+        self.advance_counter()
+      elsif var == "Death"
+        @@scenes[5].run()
+        break
+      else
+        @@scenes[6].run()
+        break
+      end
+    end
   end
 
 end
